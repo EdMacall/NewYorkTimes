@@ -1,32 +1,36 @@
-var searchTerms = $("#search-terms");
+var searchTerms = $("#basic-addon2");
 var numRecords  = $("#num-records");
 var startYear   = $("#start-year");
 var endYear     = $("#end-year");
 var topArticles = $("top-articles");
 
 $("#search-button").on("click", function(){
-  var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+  var whaturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
-  url += '?' + $.param({
+  whaturl += '?' + $.param({
     'api-key': "2297024f04844eb29533928ae0be73b3",
-    'q': searchTerms,
+    'q': searchTerms.val()
   });
 
-  if(false){url += '?' + $.param({
+  if(false){whaturl += '?' + $.param({
     'begin_date': startYear
   })}
 
-  if(false){url += '?' + $.param({
+  if(false){whaturl += '?' + $.param({
     'end_date': endYear
   })}
 
+  console.log(searchTerms.val());
+  console.log(whaturl);
+
   $.ajax({
-    url: url,
+
+    url: whaturl,
     method: 'GET',
   }).done(function(result) {
     console.log(result);
-    console.log(result.docs.multimedia);
-    for (var i = 0; i < results.docs.length; i++) {
+    console.log(result.docs);
+    for (var i = 0; i < result.docs.length; i++) {
       var articleDiv = $("<div class='item'>");
       // var rating = results[i].rating;
       var p = $("<p>").text("Rating: " + rating);
