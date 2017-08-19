@@ -1,0 +1,22 @@
+        body {
+            /*background-color: grey;*/
+        }
+
+        .jumbotron {
+            text-align: center;
+        }
+
+        .navbar-form {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group {
+            min-width: 100%;
+            width: 100%;
+        }
+
+        .navbar-form {
+            min-width: 100%;
+            width: 100%;
+        }
