@@ -12,11 +12,30 @@ $("#search-button").on("click", function(){
     'q': searchTerms,
   });
 
+  if(false){url += '?' + $.param({
+    'begin_date': startYear
+  })}
+
+  if(false){url += '?' + $.param({
+    'end_date': endYear
+  })}
+
   $.ajax({
     url: url,
     method: 'GET',
   }).done(function(result) {
     console.log(result);
+    console.log(result.docs.multimedia);
+    for (var i = 0; i < results.docs.length; i++) {
+      var articleDiv = $("<div class='item'>");
+      // var rating = results[i].rating;
+      var p = $("<p>").text("Rating: " + rating);
+      var articleImage = $("<img>");
+      articleImage.attr("src", results[i].images.fixed_height.url);
+      articleDiv.prepend(p);
+      articleDiv.prepend(articleImage);
+      $("#gifs-appear-here").prepend(articleDiv);
+    }
   }).fail(function(err) {
     throw err;
   });
